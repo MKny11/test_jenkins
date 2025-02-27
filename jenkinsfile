@@ -27,7 +27,7 @@ pipeline {
         stage('Lancer le scan ZAP') {
             steps {
                 sh '$ZAP_PATH -daemon -port 8081'
-                sh 'python tests/test_zap_scan.py'
+                sh 'python test1/test_zap.py'
             }
         }
 
