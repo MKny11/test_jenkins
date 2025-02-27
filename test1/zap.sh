@@ -1,26 +1,6 @@
-import time
-import requests
+#!/bin/bash
 
-# Définition des paramètres ZAP
-ZAP_URL = "http://localhost:8081"  # URL de ZAP
-TARGET_URL = "https://www.selenium.dev/selenium/web/web-form.html")
- # Site web cible
+# Démarrer ZAP en mode démon, écouter sur le port 8081
+# Le mode démon permet à ZAP de fonctionner en arrière-plan sans bloquer le terminal
+"C:\Program Files\ZAP\Zed Attack Proxy\zap.sh" -daemon -port 8081
 
-# Démarrer un scan actif
-scan = requests.get(f"{ZAP_URL}/JSON/ascan/action/scan/?url={TARGET_URL}")
-scan_id = scan.json()["scan"]
-
-# Suivre la progression du scan
-while True:
-    progress = requests.get(f"{ZAP_URL}/JSON/ascan/view/status/?scanId={scan_id}").json()["status"]
-    print(f"Progression du scan : {progress}%")
-    if progress == "100":
-        break
-    time.sleep(5)
-
-# Générer un rapport HTML
-report = requests.get(f"{ZAP_URL}/OTHER/core/other/htmlreport/")
-with open("zap_report.html", "w") as file:
-    file.write(report.text)
-
-print("Scan terminé ! Rapport généré : zap_report.html")
