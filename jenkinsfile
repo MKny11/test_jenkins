@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        ZAP_PATH = "/chemin/vers/zap.sh" // Modifier avec ton chemin
+        ZAP_PATH = "main/test_jenkins/test1/zap.sh" 
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Lancer les tests Selenium') {
             steps {
-                sh 'python tests/test_selenium.py'
+                sh 'python test1/test.py'
             }
         }
 
