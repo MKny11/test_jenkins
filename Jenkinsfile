@@ -9,7 +9,7 @@ pipeline {
         stage('Cloner le repo') {
             steps {
                 script {
-                    dir('test1') {  // Se placer dans le répertoire test1 avant de cloner
+                    dir('test_jenkins') {  // Se placer dans le répertoire test1 avant de cloner
                         git 'https://github.com/MKny11/test_jenkins.git'
                     }
                 }
