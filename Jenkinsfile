@@ -20,9 +20,7 @@ pipeline {
         stage('Installer les dépendances') {
             steps {
                 script {
-                    dir('main') {
-                        sh 'K:\\\\python3\\\\Scripts\\\\pip install -r requirements.txt'
-                    }
+                    sh 'K:\\\\python3\\\\Scripts\\\\pip install -r requirements.txt'
                 }
             }
         }
@@ -30,9 +28,7 @@ pipeline {
         stage('Lancer les tests Selenium') {
             steps {
                 script {
-                    dir('main') {
-                        sh 'K:\\\\python3\\\\python test.py'
-                    }
+                    sh 'K:\\\\python3\\\\python test.py'
                 }
             }
         }
@@ -40,10 +36,8 @@ pipeline {
         stage('Lancer le scan ZAP') {
             steps {
                 script {
-                    dir('main') {
-                        sh './$ZAP_PATH -daemon -port 8081'
-                        sh 'K:\\\\python3\\\\python test_zap.py'
-                    }
+                    sh './$ZAP_PATH -daemon -port 8081'
+                    sh 'K:\\\\python3\\\\python test_zap.py'
                 }
             }
         }
@@ -51,9 +45,7 @@ pipeline {
         stage('Analyser les résultats') {
             steps {
                 script {
-                    dir('main') {
-                        sh 'cat zap_report.xml'
-                    }
+                    sh 'cat zap_report.xml'
                 }
             }
         }
@@ -62,9 +54,7 @@ pipeline {
     post {
         always {
             script {
-                dir('main') {
-                    archiveArtifacts artifacts: '**/*.xml', fingerprint: true
-                }
+                archiveArtifacts artifacts: '**/*.xml', fingerprint: true
             }
         }
     }
