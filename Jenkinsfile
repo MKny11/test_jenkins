@@ -1,20 +1,16 @@
 pipeline {
     agent any
 
-    environment {
-        ZAP_PATH = "zap.sh"
-    }
-
     stages {
         stage('Cloner le repo') {
             steps {
-                git branch: 'main', url: 'https://github.com/MKny11/test_jenkins.git'
+                git 'https://github.com/MKny11/test_jenkins.git'
             }
-    
+        }
 
         stage('Lancer les tests Selenium') {
             steps {
-                sh 'python test.py'
+                sh 'python test.py'  // Lancer tes tests sans installer des dépendances
             }
         }
 
