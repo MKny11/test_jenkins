@@ -1,10 +1,12 @@
 pipeline {
     agent any
 
+    tools {
+        python 'Python3' // Déclaré dans ShiningPanda
+    }
+
     environment {
         ZAP_PATH = "zap.sh"
-        PYTHON_PATH = "C:/Users/Utilisateur/AppData/Local/Microsoft/WindowsApps/python.exe" // Spécifie le chemin où Python est installé
-        PATH = "${PYTHON_PATH}/Scripts:${PYTHON_PATH}:${env.PATH}" // Ajoute Python au PATH
     }
 
     stages {
@@ -38,7 +40,7 @@ pipeline {
             steps {
                 script {
                     dir('main') {
-                        sh '$ZAP_PATH -daemon -port 8081'
+                        sh './$ZAP_PATH -daemon -port 8081' // Exécute le script ZAP
                         sh 'python test_zap.py'
                     }
                 }
