@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         ZAP_PATH = "zap.sh"
-        PATH = "K:\\python3\\Scripts;K:\\python3;${env.PATH}"
+        PATH = "K:\\\\python3\\\\Scripts;K:\\\\python3;${env.PATH}"
     }
 
     stages {
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     dir('main') {
-                        sh 'K:\\python3\\Scripts\\pip install -r requirement.txt'
+                        sh 'K:\\\\python3\\\\Scripts\\\\pip install -r requirements.txt'
                     }
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     dir('main') {
-                        sh 'K:\\python3\\python test.py'
+                        sh 'K:\\\\python3\\\\python test.py'
                     }
                 }
             }
@@ -42,7 +42,7 @@ pipeline {
                 script {
                     dir('main') {
                         sh './$ZAP_PATH -daemon -port 8081'
-                        sh 'K:\\python3\\python test_zap.py'
+                        sh 'K:\\\\python3\\\\python test_zap.py'
                     }
                 }
             }
