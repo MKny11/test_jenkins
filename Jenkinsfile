@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        ZAP_PATH = "test1/zap.sh"
+        ZAP_PATH = "zap.sh"
     }
 
     stages {
