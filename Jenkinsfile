@@ -10,13 +10,7 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/MKny11/test_jenkins.git'
             }
-        }
-
-        stage('Installer les dépendances') {
-            steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
+    
 
         stage('Lancer les tests Selenium') {
             steps {
