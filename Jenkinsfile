@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     dir('main') {
-                        sh 'K:\\python3\\Scripts\\pip install -r requirements.txt'
+                        sh 'K:\\python3\\Scripts\\pip install -r requirement.txt'
                     }
                 }
             }
