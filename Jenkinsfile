@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        python 'Python3' // Déclaré dans ShiningPanda
+        'jenkins.plugins.shiningpanda.tools.PythonInstallation' 'Python3' // Déclaré dans ShiningPanda
     }
 
     environment {
