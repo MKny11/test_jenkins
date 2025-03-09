@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         ZAP_PATH = "zap.sh"
-        PYTHON_PATH = "C:\Users\Utilisateur\AppData\Local\Microsoft\WindowsApps\python.exe" // Spécifie le chemin où Python est installé
+        PYTHON_PATH = "C:/Users/Utilisateur/AppData/Local/Microsoft/WindowsApps/python.exe" // Spécifie le chemin où Python est installé
         PATH = "${PYTHON_PATH}/Scripts:${PYTHON_PATH}:${env.PATH}" // Ajoute Python au PATH
     }
 
