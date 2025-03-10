@@ -18,10 +18,12 @@ while True:
     print(f"Scan progress: {progress}%")
     if progress == "100":
         break
-    time.sleep(5)
+    time.sleep(1)  # Vérification plus rapide (1 seconde)
 
 # Récupérer le rapport HTML du scan
 report = requests.get(f"{ZAP_URL}/OTHER/core/other/htmlreport/")
+
+# Sauvegarder le rapport
 with open("zap_report.html", "w") as f:
     f.write(report.text)
 
