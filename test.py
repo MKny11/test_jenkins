@@ -1,15 +1,21 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
-# Options pour Firefox
+# Configurer les options de Firefox
 firefox_options = Options()
-firefox_options.add_argument("--start-maximized")  # Ouvrir le navigateur en plein écran
 
-# Chemin vers le geckodriver
-driver = webdriver.Firefox(executable_path="K://M1_MIAGE//JENKINS//geckodriver.exe", options=firefox_options)
+# Définir le chemin du geckodriver via Service
+service = Service(executable_path="K://M1_MIAGE//JENKINS//geckodriver.exe")
+
+# Lancer Firefox avec les options et le service
+driver = webdriver.Firefox(service=service, options=firefox_options)
+
+# Lancer le site
 driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
 # Vérifier le titre de la page
@@ -92,7 +98,7 @@ try:
         EC.presence_of_element_located((By.ID, "message"))
     )
     print("Message après soumission:", message.text)
-except:
+except TimeoutException:
     print("Le message n'est pas apparu à temps.")
 
 # Fermer le navigateur
