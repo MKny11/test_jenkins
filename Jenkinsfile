@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     sh 'K:\\\\python3\\\\Scripts\\\\pip install -r requirements.txt'
-                    sh 'K:\\python3\\Scripts\\pip install webdriver-manager' // Installation de webdriver-manager
+                 sh 'K:\\python3\\python -m pip install webdriver-manager'// Installation de webdriver-manager
                 }
             }
         }
