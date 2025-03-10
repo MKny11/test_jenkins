@@ -1,19 +1,19 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-# Configurer les options de Firefox
-firefox_options = Options()
+# Configurer les options de Chrome
+chrome_options = Options()
 
-# Définir le chemin du geckodriver via Service
-service = Service(executable_path="K://M1_MIAGE//JENKINS//geckodriver.exe")
+# Définir le chemin du chromedriver via Service
+service = Service(executable_path="K://M1_MIAGE//JENKINS//chromedriver_win64//chromedriver.exe")
 
-# Lancer Firefox avec les options et le service
-driver = webdriver.Firefox(service=service, options=firefox_options)
+# Lancer Chrome avec les options et le service
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Lancer le site
 driver.get("https://www.selenium.dev/selenium/web/web-form.html")
