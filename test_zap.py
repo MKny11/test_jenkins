@@ -4,27 +4,25 @@ import requests
 # URL de l'API ZAP
 ZAP_URL = "http://127.0.0.1:8081"  # L'adresse de ton serveur ZAP
 
-# Cibler l'URL à scanner
+# Cibler l'URL à explorer avec le spider
 TARGET_URL = "https://www.selenium.dev/selenium/web/web-form.html"
 
-# Démarrer un scan actif sur l'URL cible
-scan = requests.get(f"{ZAP_URL}/JSON/ascan/action/scan/?url={TARGET_URL}")
-scan_id = scan.json().get("scan")
+# Démarrer le spider
+spider = requests.get(f"{ZAP_URL}/JSON/spider/action/scan/?url={TARGET_URL}&maxChildren=5")
+spider_id = spider.json().get("scan")
 
-# Vérifier l'état du scan jusqu'à ce qu'il soit terminé
+# Vérifier l'état du spider jusqu'à ce qu'il soit terminé
 while True:
-    status = requests.get(f"{ZAP_URL}/JSON/ascan/view/status/?scanId={scan_id}")
+    status = requests.get(f"{ZAP_URL}/JSON/spider/view/status/?scanId={spider_id}")
     progress = status.json().get("status")
-    print(f"Scan progress: {progress}%")
+    print(f"Spider progress: {progress}%")
     if progress == "100":
         break
-    time.sleep(1)  # Vérification plus rapide (1 seconde)
+    time.sleep(2)
 
-# Récupérer le rapport HTML du scan
+# Récupérer le rapport HTML après le spider
 report = requests.get(f"{ZAP_URL}/OTHER/core/other/htmlreport/")
-
-# Sauvegarder le rapport
-with open("zap_report.html", "w") as f:
+with open("zap_spider_report.html", "w") as f:
     f.write(report.text)
 
-print("Scan terminé ! Rapport généré.")
+print("Exploration terminée ! Rapport généré.")
