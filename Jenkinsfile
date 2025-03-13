@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        ZAP_PATH = "zap.sh"
+        ZAP_PATH = "C:\\\\Program Files\\\\ZAP\\\\Zed Attack Proxy\\\\ZAP.exe"
         PATH = "K:\\\\python3\\\\Scripts;K:\\\\python3;${env.PATH}"
     }
 
@@ -36,7 +36,7 @@ pipeline {
         stage('Lancer le scan ZAP') {
             steps {
                 script {
-                    sh './$ZAP_PATH -daemon -port 8081'
+
                     sh 'K:\\\\python3\\\\python test_zap.py'
                 }
             }
