@@ -2,13 +2,13 @@ import time
 import requests
 
 # URL de l'API ZAP
-ZAP_URL = "http://127.0.0.1:8081"  # L'adresse de ton serveur ZAP
-
-# Cibler l'URL à explorer avec le spider
+ZAP_URL = "http://127.0.0.1:8081"
 TARGET_URL = "https://www.selenium.dev/selenium/web/web-form.html"
 
-# Démarrer le spider
-spider = requests.get(f"{ZAP_URL}/JSON/spider/action/scan/?url={TARGET_URL}&maxChildren=5")
+# Configurer le spider avec des limites
+spider = requests.get(
+    f"{ZAP_URL}/JSON/spider/action/scan/?url={TARGET_URL}&maxChildren=1&maxDuration=60&recurse=False&subtreeOnly=True"
+)
 spider_id = spider.json().get("scan")
 
 # Vérifier l'état du spider jusqu'à ce qu'il soit terminé
