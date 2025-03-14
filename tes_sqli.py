@@ -17,7 +17,7 @@ options = [
 command = ["python", "sqlmap.py", "-u", TARGET_URL] + options
 
 # Lancer la commande
-print(f"📡 Lancement de sqlmap sur {TARGET_URL}...")
+print(f" Lancement de sqlmap sur {TARGET_URL}...")
 process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 # Lire la sortie en temps réel
@@ -30,7 +30,7 @@ with open("sqlmap_report.txt", "w") as report:
 # Vérifier si le processus a terminé correctement
 return_code = process.wait()
 if return_code == 0:
-    print("\n✅ Test terminé avec succès ! Rapport généré dans 'sqlmap_report.txt'")
+    print("\n Test terminé avec succès ! Rapport généré dans 'sqlmap_report.txt'")
 else:
-    print("\n❌ Une erreur est survenue. Consulte le rapport pour plus de détails.")
+    print("\n Une erreur est survenue. Consulte le rapport pour plus de détails.")
 
