@@ -36,16 +36,31 @@ pipeline {
         stage('Lancer le scan ZAP') {
             steps {
                 script {
-
                     sh 'K:\\\\python3\\\\python test_zap.py'
                 }
             }
         }
 
-        stage('Analyser les résultats') {
+        stage('Lancer le test SQLMap') {
             steps {
                 script {
-                    sh 'cat zap_report.xml'
+                    sh 'K:\\\\python3\\\\python test_sql.py'
+                }
+            }
+        }
+
+        stage('Analyser les résultats ZAP') {
+            steps {
+                script {
+                    sh 'cat zap_report.html'
+                }
+            }
+        }
+
+        stage('Analyser les résultats SQLMap') {
+            steps {
+                script {
+                    sh 'cat sqlmap_report.txt'
                 }
             }
         }
@@ -54,7 +69,7 @@ pipeline {
     post {
         always {
             script {
-                archiveArtifacts artifacts: '**/*.xml', fingerprint: true
+                archiveArtifacts artifacts: '**/*.html, **/*.txt', fingerprint: true
             }
         }
     }
