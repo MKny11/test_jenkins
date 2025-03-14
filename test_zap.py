@@ -5,7 +5,7 @@ from zapv2 import ZAPv2
 
 # Cible à scanner
 TARGET_URL = 'https://www.selenium.dev/selenium/web/web-form.html'
-ZAP_URL = 'http://127.0.0.1:8081'  # Port de ZAP (assure-toi qu'il est ouvert)
+ZAP_URL = 'http://127.0.0.1:8080'  # Port de ZAP (assure-toi qu'il est ouvert)
 API_KEY = None  # Si l'API key est activée, remplace `None` par la clé
 
 # Connexion à ZAP
