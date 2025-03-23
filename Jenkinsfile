@@ -44,7 +44,7 @@ pipeline {
         stage('Lancer le test SQLMap') {
             steps {
                 script {
-                    sh 'K:\\\\python3\\\\python test_sql.py'
+                    sh 'K:\\\\python3\\\\python test_sqli.py'
                 }
             }
         }
