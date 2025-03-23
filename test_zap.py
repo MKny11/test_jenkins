@@ -10,7 +10,7 @@ API_KEY = 'kjbrlu6ojfr234nfptjoi63ida'
 TARGET_URL = 'https://www.selenium.dev/selenium/web/web-form.html'
 
 # Configuration du proxy pour le daemon ZAP
-ZAP = ZAPv2(apikey=API_KEY, proxies={'http': 'http://127.0.0.1:8081', 'https': 'http://127.0.0.1:8081'})
+ZAP = ZAPv2(apikey=API_KEY, proxies={'http': 'http://localhost:8081/', 'https': 'http://localhost:8081/'})
 
 def start_scan():
     print(f"Démarrage du scan actif sur {TARGET_URL}...")
