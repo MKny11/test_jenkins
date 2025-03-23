@@ -14,15 +14,33 @@ ZAP = ZAPv2(apikey=API_KEY, proxies={'http': 'http://localhost:8081/', 'https': 
 
 def start_scan():
     print(f"Démarrage du scan actif sur {TARGET_URL}...")
+    
+    # Lancer le scan actif
     scan_id = ZAP.ascan.scan(TARGET_URL)
     
+    # Vérifier si l'ID de scan est valide
+    if not scan_id or scan_id == 'does_not_exist':
+        print("Erreur : Le scan n'a pas pu être démarré correctement.")
+        return
+    
+    print(f"Scan démarré avec l'ID : {scan_id}")
+    
     # Suivi de la progression du scan
-    while int(ZAP.ascan.status(scan_id)) < 100:
-        progress = ZAP.ascan.status(scan_id)
+    while True:
+        status = ZAP.ascan.status(scan_id)
+        
+        if status == 'does_not_exist':
+            print(f"Erreur : Scan avec l'ID {scan_id} n'existe pas.")
+            break
+        
+        progress = int(status)
         print(f"Progression du scan : {progress}%")
+        
+        if progress >= 100:
+            print("Scan actif terminé !")
+            break
+        
         time.sleep(5)
-
-    print("Scan actif terminé !")
 
     # Affichage des hôtes scannés
     print(f"Hôtes trouvés : {', '.join(ZAP.core.hosts)}")
