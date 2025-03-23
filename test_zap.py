@@ -3,8 +3,8 @@ import time
 from pprint import pprint
 from zapv2 import ZAPv2
 
-# Clé API ZAP (vérifie qu’elle est bien activée dans les paramètres ZAP)
-API_KEY = 'kjbrlu6ojfr234nfptjoi63ida'
+# Clé API ZAP
+API_KEY = 'efou9m300gej2lrkbb4b51tsre'
 
 # URL cible
 TARGET_URL = 'https://www.selenium.dev/selenium/web/web-form.html'
