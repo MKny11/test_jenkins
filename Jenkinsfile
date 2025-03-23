@@ -52,6 +52,7 @@ pipeline {
         stage('Analyser les résultats ZAP') {
             steps {
                 script {
+                    // Affichage du rapport ZAP
                     sh 'cat zap_report.html'
                 }
             }
@@ -60,6 +61,7 @@ pipeline {
         stage('Analyser les résultats SQLMap') {
             steps {
                 script {
+                    // Affichage du rapport SQLMap
                     sh 'cat sqlmap_report.txt'
                 }
             }
@@ -69,6 +71,7 @@ pipeline {
     post {
         always {
             script {
+                // Archive les rapports générés (HTML, TXT) après l'exécution des tests
                 archiveArtifacts artifacts: '**/*.html, **/*.txt', fingerprint: true
             }
         }
